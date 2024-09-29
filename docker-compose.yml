@@ -1,6 +1,19 @@
 version: '3.8'
 services:
-  db:
+  # Original data source
+  mysql:
+    image: mysql:8.0.39-debian
+    environment:
+      - MYSQL_USER=mysql_user
+      - MYSQL_PASSWORD=mysql_pass
+      - MYSQL_DB=grandblue
+    ports:
+      - '13307:13307'
+    volumes:
+      - ./db/mysql_initdb.sql:/docker-entrypoint-initdb.d/mysql_initdb.sql
+
+  # Data storage used by AI
+  vector_datastore:
     image: pgvector/pgvector:0.7.4-pg17
     environment:
       - POSTGRES_USER=postgres_user
@@ -9,4 +22,4 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+      - ./db/pgvector_initdb.sql:/docker-entrypoint-initdb.d/pgvector_initdb.sql

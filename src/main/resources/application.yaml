@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/grandblue
+    username: postgres_user
+    password: postgres_pass
+  ai:
+    openai:
+      api-key: ${OPEN_AI_API_KEY}
+    vectorstore:
+      pgvector:
+#        initialize-schema: true
+        schema-validation: true
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1536

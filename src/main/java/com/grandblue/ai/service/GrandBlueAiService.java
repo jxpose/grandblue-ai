@@ -11,9 +11,9 @@ public class GrandBlueAiService {
     this.chatClient = chatClient;
   }
 
-  public String chat() {
+  public String chat(String query) {
     var result = chatClient.prompt()
-        .user("Do you have any googles?")
+        .user(query)
         .call();
 
     return result.content();

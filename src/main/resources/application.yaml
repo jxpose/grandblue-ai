@@ -8,7 +8,6 @@ spring:
       api-key: ${OPEN_AI_API_KEY}
     vectorstore:
       pgvector:
-#        initialize-schema: true
         schema-validation: true
         index-type: HNSW
         distance-type: COSINE_DISTANCE

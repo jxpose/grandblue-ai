@@ -1,7 +1,8 @@
-package com.grandblue.ai.service;
+package com.grandblue.ai.chat.service;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
 @Service
 public class GrandBlueAiService {
@@ -12,10 +13,16 @@ public class GrandBlueAiService {
   }
 
   public String chat(String query) {
-    var result = chatClient.prompt()
+    return chatClient.prompt()
         .user(query)
-        .call();
+        .call()
+        .content();
+  }
 
-    return result.content();
+  public Flux<String> stream(String query) {
+    return chatClient.prompt()
+        .user(query)
+        .stream()
+        .content();
   }
 }

@@ -15,17 +15,18 @@ CREATE TABLE product (
     product_id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     product_name VARCHAR(255) NOT NULL,
     product_description TEXT,
-    product_quantity INT
+    product_quantity INT,
+    unit_price INT
 );
 
-INSERT INTO product (product_name, product_description, product_quantity) VALUES
-('Aqualung Wetsuit', 'A premium wetsuit designed for warmth and flexibility, perfect for cold-water diving.', 2),
-('Mares Dive Computer', 'A top-tier dive computer with easy-to-read display, advanced algorithms, and wireless connectivity.', 0),
-('Cressi Fins', 'High-performance diving fins offering great propulsion and comfort for long dives.', 3),
-('Suunto Dive Watch', 'A durable dive watch with water resistance up to 100 meters and built-in compass for underwater navigation.', 4),
-('Scubapro BCD', 'A buoyancy control device (BCD) providing exceptional stability and comfort during your dives.', 5),
-('Atomic Aquatics Regulator', 'High-quality regulator ensuring smooth, easy breathing at all depths.', 6),
-('Oceanic Dive Mask', 'Wide-vision mask with anti-fog coating, ideal for clear underwater views.', 0),
-('Seac Sub Dry Bag', 'A waterproof dry bag to keep your personal belongings safe and dry on boat trips.', 2),
-('Tusa Snorkel', 'Ergonomically designed snorkel with a flexible tube and water-clearing valve.', 1),
-('IST Dive Knife', 'Stainless steel dive knife with a durable handle, ideal for underwater cutting and emergency situations.', 1);
+INSERT INTO product (product_name, product_description, product_quantity, unit_price) VALUES
+('Aqualung Wetsuit', 'A premium wetsuit designed for warmth and flexibility, perfect for cold-water diving.', 2, 100),
+('Mares Dive Computer', 'A top-tier dive computer with easy-to-read display, advanced algorithms, and wireless connectivity.', 0, 50),
+('Cressi Fins', 'High-performance diving fins offering great propulsion and comfort for long dives.', 3, 200),
+('Suunto Dive Watch', 'A durable dive watch with water resistance up to 100 meters and built-in compass for underwater navigation.', 4, 430),
+('Scubapro BCD', 'A buoyancy control device (BCD) providing exceptional stability and comfort during your dives.', 5, 1000),
+('Atomic Aquatics Regulator', 'High-quality regulator ensuring smooth, easy breathing at all depths.', 6, 100),
+('Oceanic Dive Mask', 'Wide-vision mask with anti-fog coating, ideal for clear underwater views.', 0, 20),
+('Seac Sub Dry Bag', 'A waterproof dry bag to keep your personal belongings safe and dry on boat trips.', 2, 10),
+('Tusa Snorkel', 'Ergonomically designed snorkel with a flexible tube and water-clearing valve.', 1, 15),
+('IST Dive Knife', 'Stainless steel dive knife with a durable handle, ideal for underwater cutting and emergency situations.', 1, 55);

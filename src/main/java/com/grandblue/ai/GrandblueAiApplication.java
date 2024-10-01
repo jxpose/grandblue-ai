@@ -21,19 +21,15 @@ public class GrandblueAiApplication {
 
 
 	//TODO Uncomment to populate vector data store
-	@Bean
-	CommandLineRunner populateVectorDataStore(GrandBlueAiService grandBlueAi, ProductRepository productRepository, VectorStore vectorStore) {
-		System.out.println("Chat start");
-		return args -> {
-
-			var productList = productRepository.findAll().stream()
-					.map(product -> {
-								var content = "name: " + product.productName() + ", description: " + product.productDescription() + ", quantity: " + product.productQuantity();
-								return new Document( content, Map.of("productId", product.productId()));
-							}
-					).toList();
-
-			vectorStore.add(productList);
-		};
-	}
+//	@Bean
+//	CommandLineRunner populateVectorDataStore(GrandBlueAiService grandBlueAi, ProductRepository productRepository, VectorStore vectorStore) {
+//		return args -> {
+//
+//			var productList = productRepository.findAll().stream()
+//					.map(product -> new Document(product.toString(), Map.of("productId", product.productId())))
+//					.toList();
+//
+//			vectorStore.add(productList);
+//		};
+//	}
 }

@@ -2,6 +2,7 @@ package com.grandblue.ai.config;
 
 import com.grandblue.ai.logging.GrandBlueLogger;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.PromptChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
@@ -27,9 +28,11 @@ public class GrandBlueAiConfig {
         .defaultSystem(resource)
         .defaultAdvisors(
             new PromptChatMemoryAdvisor(chatMemory),
+            new MessageChatMemoryAdvisor(chatMemory),
             new QuestionAnswerAdvisor(vectorStore, SearchRequest.defaults()),
             new GrandBlueLogger()
         )
+        .defaultFunctions("purchaseProduct", "restockProduct")
         .build();
   }
 
